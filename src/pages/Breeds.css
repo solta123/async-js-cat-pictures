@@ -1,0 +1,51 @@
+.breed-card {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  overflow: hidden;
+}
+
+.breed-image {
+  flex: 1 1 300px;
+  max-width: 300px;
+  overflow: hidden;
+}
+
+.breed-image img {
+  width: 100%;
+  height: 200px;
+  object-fit: scale-down;
+}
+
+.breed-info {
+  flex: 1 1 50%;
+  text-align: left;
+  padding: 20px;
+}
+
+.breed-info h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.breed-info p {
+  margin: 5px 0;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.breed-info a {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 1rem;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.breed-info a:hover {
+  color: #0056b3;
+}
