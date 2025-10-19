@@ -1,26 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './Breeds.css';
 
 export function Breeds() {
   const [breeds, setBreeds] = useState([]);
   const [hasFailed, setHasFailed] = useState(false);
 
-  useEffect(() => {
-    async function fetchBreeds() {
-      try {
-        const response = await fetch('https://api.thecatapi.com/v1/breeds');
-        if (!response.ok) {
-          throw new Error(`Failed to fetch breeds: ${response.status}`);
-        }
-        const data = await response.json();
-        setBreeds(data);
-      } catch (error) {
-        console.error(error.message);
-        setHasFailed(true);
-      }
-    }
-    fetchBreeds();
-  }, []);
+  // TODO: Fetch breeds data with async/await
+  // API URL: https://api.thecatapi.com/v1/breeds
 
   if (hasFailed) {
     return <div>Failed to load cat breeds. Please try again later.</div>;

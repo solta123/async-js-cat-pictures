@@ -4,6 +4,12 @@ import { Home } from './pages/Home';
 import { Breeds } from './pages/Breeds';
 import { DogGallery } from './pages/DogGallery';
 
+const navItems = [
+  { path: '/', label: 'Home', element: <Home /> },
+  { path: '/breeds', label: 'Breeds', element: <Breeds /> },
+  { path: '/dog-gallery', label: 'Dog Gallery', element: <DogGallery /> },
+];
+
 function App() {
   return (
     <Router>
@@ -11,22 +17,22 @@ function App() {
         <header className="App-header">
           <h1>Cat Pictures</h1>
           <nav className="navbar">
-            <NavLink to="/" className={({ isActive }) => (isActive ? 'active' : '')}>
-              Home
-            </NavLink>
-            <NavLink to="/breeds" className={({ isActive }) => (isActive ? 'active' : '')}>
-              Breeds
-            </NavLink>
-            <NavLink to="/dog-gallery" className={({ isActive }) => (isActive ? 'active' : '')}>
-              Dog Gallery
-            </NavLink>
+            {navItems.map((item) => (
+              <NavLink
+                key={item.path}
+                to={item.path}
+                className={({ isActive }) => (isActive ? 'active' : '')}
+              >
+                {item.label}
+              </NavLink>
+            ))}
           </nav>
         </header>
         <main>
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/breeds" element={<Breeds />} />
-            <Route path="/dog-gallery" element={<DogGallery />} />
+            {navItems.map((item) => (
+              <Route key={item.path} path={item.path} element={item.element} />
+            ))}
           </Routes>
         </main>
       </div>
