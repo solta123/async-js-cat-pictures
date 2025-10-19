@@ -34,7 +34,7 @@ export const DogGallery = () => {
   }, []);
 
   if (hasFailed) {
-    return <div className="error">Something went wrong</div>;
+    return <div>Something went wrong</div>;
   }
 
   if (!imgUrl) {
