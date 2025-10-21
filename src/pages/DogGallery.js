@@ -1,15 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export const DogGallery = () => {
   const [imgUrl, setImgUrl] = useState('')
-  const [hasFailed, setHasFailed] = useState(false);
 
-  // TODO: Fetch a new dog image every 10 seconds with setInterval
-  // API URL: https://dog.ceo/api/breeds/image/random
-
-  if (hasFailed) {
-    return <div>Something went wrong</div>;
-  }
+  useEffect(() => {
+    // TODO: Fetch a new dog image every 10 seconds with setInterval
+  }, [])
 
   return (
     <>

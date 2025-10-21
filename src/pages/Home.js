@@ -1,15 +1,12 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export function Home() {
   const [cats, setCats] = useState([]);
-  const [hasFailed, setHasFailed] = useState(false);
 
-  // TODO: Fetch cat images with Promise
-  // API URL: https://api.thecatapi.com/v1/images/search?limit=10
+  useEffect(() => {
+    // TODO: Fetch cat images with Promise (use setCats for display the images
+  }, [])
 
-  if (hasFailed) {
-    return <div className="error">Something went wrong</div>;
-  }
 
   return (
     <>
