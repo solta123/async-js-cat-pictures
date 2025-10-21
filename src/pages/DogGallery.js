@@ -48,7 +48,6 @@ export const DogGallery = () => {
         <img
           src={imgUrl}
           alt="dog-picture"
-          loading="lazy"
         />
       </div>
     </>
