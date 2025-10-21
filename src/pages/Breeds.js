@@ -1,19 +1,35 @@
 import { useEffect, useState } from 'react';
-import './Breeds.css';
 
 export function Breeds() {
-  const [breeds, setBreeds] = useState([]);
+  const [breeds, setBreeds] = useState({
+    amau: null,
+    amis: null,
+    bali: null,
+  });
   const [hasFailed, setHasFailed] = useState(false);
 
   useEffect(() => {
     async function fetchBreeds() {
       try {
-        const response = await fetch('https://api.thecatapi.com/v1/breeds');
-        if (!response.ok) {
-          throw new Error(`Failed to fetch breeds: ${response.status}`);
+        const requests = await Promise.all([
+          fetch('https://api.thecatapi.com/v1/images/search?breed_ids=amau'),
+          fetch('https://api.thecatapi.com/v1/images/search?breed_ids=amis'),
+          fetch('https://api.thecatapi.com/v1/images/search?breed_ids=bali'),
+        ]);
+
+        if (requests.some((res) => !res.ok)) {
+          throw new Error('Failed to fetch breeds');
         }
-        const data = await response.json();
-        setBreeds(data);
+
+        const [json1, json2, json3] = await Promise.all(
+          requests.map(async (req) => req.json())
+        );
+
+        setBreeds({
+          amau: json1[0],
+          amis: json2[0],
+          bali: json3[0],
+        });
       } catch (error) {
         console.error(error.message);
         setHasFailed(true);
@@ -30,27 +46,33 @@ export function Breeds() {
     <>
       <h2>Cat Breeds</h2>
       <div className="page-container">
-        {breeds.map((breed) => (
-          <div key={breed.id} className="breed-card">
-            <div className="breed-image">
-              <img
-                src={`https://cdn2.thecatapi.com/images/${breed.reference_image_id}.jpg`}
-                alt={breed.name}
-                loading="lazy"
-              />
-            </div>
-            <div className="breed-info">
-              <h3>{breed.name}</h3>
-              <p><strong>Origin:</strong> {breed.origin}</p>
-              <p><strong>Temperament:</strong> {breed.temperament}</p>
-              <p><strong>Life Span:</strong> {breed.life_span} years</p>
-              <p>{breed.description}</p>
-              <a href={breed.wikipedia_url} target="_blank" rel="noopener noreferrer">
-                Learn more on Wikipedia
-              </a>
-            </div>
-          </div>
-        ))}
+        {breeds.amau && (
+          <figure>
+            <img
+              src={breeds.amau.url}
+              alt={breeds.amau.id}
+            />
+            <figcaption>amau</figcaption>
+          </figure>
+        )}
+        {breeds.amis && (
+          <figure>
+            <img
+              src={breeds.amis.url}
+              alt={breeds.amis.id}
+            />
+            <figcaption>amis</figcaption>
+          </figure>
+        )}
+        {breeds.bali && (
+          <figure>
+            <img
+              src={breeds.bali.url}
+              alt={breeds.bali.id}
+            />
+            <figcaption>bali</figcaption>
+          </figure>
+        )}
       </div>
     </>
   );
