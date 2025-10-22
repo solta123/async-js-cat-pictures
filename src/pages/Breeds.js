@@ -8,7 +8,8 @@ export function Breeds() {
   });
 
   useEffect(() => {
-    // TODO: Fetch breeds data with async/await (fetch the following ids: amau, amis, bali)
+    // TODO: Fetch breeds data with async/await 
+    // use the following ids: amau (Arabian Mau), amis (Australian Mist), bali (Balinese)
   }, [])
 
   return (
