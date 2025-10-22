@@ -52,7 +52,7 @@ export function Breeds() {
               src={breeds.amau.url}
               alt={breeds.amau.id}
             />
-            <figcaption>amau</figcaption>
+            <figcaption>Arabian Mau</figcaption>
           </figure>
         )}
         {breeds.amis && (
@@ -61,7 +61,7 @@ export function Breeds() {
               src={breeds.amis.url}
               alt={breeds.amis.id}
             />
-            <figcaption>amis</figcaption>
+            <figcaption>Australian Mist</figcaption>
           </figure>
         )}
         {breeds.bali && (
@@ -70,7 +70,7 @@ export function Breeds() {
               src={breeds.bali.url}
               alt={breeds.bali.id}
             />
-            <figcaption>bali</figcaption>
+            <figcaption>Balinese</figcaption>
           </figure>
         )}
       </div>
