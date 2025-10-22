@@ -4,7 +4,7 @@ export function Home() {
   const [cats, setCats] = useState([]);
 
   useEffect(() => {
-    // TODO: Fetch cat images with Promise (use setCats for display the images
+    // TODO: Fetch cat images with Promise (use setCats for display the images)
   }, [])
 
 

@@ -4,7 +4,7 @@ export const DogGallery = () => {
   const [imgUrl, setImgUrl] = useState('')
 
   useEffect(() => {
-    // TODO: Fetch a new dog image every 10 seconds with setInterval
+    // TODO: Fetch a new dog image every 8 seconds with setInterval
   }, [])
 
   return (
